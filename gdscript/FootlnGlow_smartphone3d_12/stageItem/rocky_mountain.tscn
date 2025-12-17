@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://bypntudhdmv7o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_okhmr"]
+albedo_color = Color(0.235294, 0.235294, 0.235294, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_18dkw"]
+material = SubResource("StandardMaterial3D_okhmr")
+size = Vector3(1, 0.5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b4fdg"]
+albedo_color = Color(0.235294, 0.235294, 0.235294, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kpr4h"]
+material = SubResource("StandardMaterial3D_b4fdg")
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xtxcn"]
+
+[node name="RockyMountain" type="StaticBody3D"]
+
+[node name="base" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+mesh = SubResource("BoxMesh_18dkw")
+
+[node name="top" type="MeshInstance3D" parent="base"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_kpr4h")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_xtxcn")

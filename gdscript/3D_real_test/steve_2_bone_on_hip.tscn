@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://db0risndaohf6"]
+
+[ext_resource type="PackedScene" uid="uid://y1kqueoex0rt" path="res://steve2_bone_on_hip.glb" id="1_8hvff"]
+
+[node name="steve2_bone_on_hip" instance=ExtResource("1_8hvff")]
+
+[node name="Skeleton3D" parent="アーマチュア" index="0"]
+bones/4/rotation = Quaternion(-9.15483e-08, -4.84119e-08, -0.617207, 0.786801)
+bones/8/rotation = Quaternion(-9.15483e-08, 4.84119e-08, 0.617207, 0.786801)
+bones/11/rotation = Quaternion(1.56234e-05, -9.57597e-11, 0.999985, -0.00543861)

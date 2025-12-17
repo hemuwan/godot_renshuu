@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://i4avy06keoqf"]
+
+[ext_resource type="PackedScene" uid="uid://bomljmjvfwujs" path="res://assets/field/horror.glb" id="1_dir5f"]
+
+[node name="Field" instance=ExtResource("1_dir5f")]
+
+[node name="Ceiling" parent="." index="1"]
+visible = false

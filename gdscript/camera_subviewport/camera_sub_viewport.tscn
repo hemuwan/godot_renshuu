@@ -1,0 +1,79 @@
+[gd_scene load_steps=12 format=3 uid="uid://daxn2x60bv0cf"]
+
+[ext_resource type="Script" path="res://character_body_3d.gd" id="1_p23x4"]
+[ext_resource type="Shader" path="res://camera_sub_viewport.gdshader" id="2_26wqn"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_by23r"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mqjql"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_b6ffs"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cjo6l"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_f2mm5"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_i7wvq"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_2lpox"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sq8k1"]
+render_priority = 0
+shader = ExtResource("2_26wqn")
+
+[sub_resource type="QuadMesh" id="QuadMesh_cx4kh"]
+material = SubResource("ShaderMaterial_sq8k1")
+subdivide_width = 32
+subdivide_depth = 32
+
+[node name="camera_sub_viewport" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0.499886, -0.739149, 0.451414, -0.0106809, 0.515906, 0.856578, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.42894, 7.09639)
+script = ExtResource("1_p23x4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+mesh = SubResource("CapsuleMesh_by23r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("CapsuleShape3D_mqjql")
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.512774, -0.530935)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_b6ffs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_cjo6l")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 6.07716, 0, 0, 0, 10.6225, 0, 3.39413, -4.31795)
+visible = false
+mesh = SubResource("BoxMesh_f2mm5")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.85072, 1.74177, -3.69202)
+mesh = SubResource("SphereMesh_i7wvq")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport"]
+transform = Transform3D(0.104129, 0, -0.994564, 0, 1, 0, 0.994564, 0, 0.104129, 2.52909, 2.6307, -3.41753)
+visible = false
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.701018, 3.49386, -2.81262)
+texture = SubResource("ViewportTexture_2lpox")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.907198, 0.420703, 0, -0.420703, 0.907198, 5.87898, 2.17793, 0)
+mesh = SubResource("QuadMesh_cx4kh")

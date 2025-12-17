@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://mrpei8af15s6"]
+
+[ext_resource type="Script" path="res://components/enemy.gd" id="1_bd2x3"]
+[ext_resource type="PackedScene" uid="uid://c7qed8yeovuy8" path="res://design/design_enemy_fort.tscn" id="2_5wn33"]
+[ext_resource type="PackedScene" uid="uid://dxnsljdswhsqh" path="res://Decorations/enemy_defeated_animation.tscn" id="2_cmo61"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_61cds"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_shivs"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ggbh5"]
+radius = 3.0
+
+[node name="enemy" type="CharacterBody3D" groups=["enemyGroup", "startStopControl", "targetEnemy"]]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_bd2x3")
+m_scn_enemyDefeatedAnim = ExtResource("2_cmo61")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("CylinderMesh_61cds")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_shivs")
+
+[node name="bulletSensor" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="bulletSensor"]
+shape = SubResource("SphereShape3D_ggbh5")
+
+[node name="Timer_fire" type="Timer" parent="."]
+wait_time = 6.0
+
+[node name="Timer_short" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.7)
+
+[node name="DesignEnemyFort" parent="." instance=ExtResource("2_5wn33")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[connection signal="body_entered" from="bulletSensor" to="." method="_on_bullet_sensor_body_entered"]
+[connection signal="timeout" from="Timer_fire" to="." method="_on_timer_fire_timeout"]
+[connection signal="timeout" from="Timer_short" to="." method="_on_timer_short_timeout"]

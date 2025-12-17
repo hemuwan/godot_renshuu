@@ -1,0 +1,76 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6y4gquhrkjt5"]
+
+[ext_resource type="Script" path="res://game_system.gd" id="1_4vorf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pgct0"]
+font_size = 70
+
+[node name="gameSystem" type="Node3D"]
+script = ExtResource("1_4vorf")
+
+[node name="currentStage" type="Node3D" parent="."]
+
+[node name="messages" type="Node" parent="."]
+
+[node name="ready" type="Label" parent="messages"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.0
+offset_top = -48.0
+offset_right = 104.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Ready"
+label_settings = SubResource("LabelSettings_pgct0")
+
+[node name="go" type="Label" parent="messages"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.0
+offset_top = -48.0
+offset_right = 104.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Go!"
+label_settings = SubResource("LabelSettings_pgct0")
+
+[node name="stageClear" type="Label" parent="messages"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.0
+offset_top = -48.0
+offset_right = 104.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Stage Clear !"
+label_settings = SubResource("LabelSettings_pgct0")
+
+[node name="stageFailred" type="Label" parent="messages"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.0
+offset_top = -48.0
+offset_right = 104.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Stage Failed"
+label_settings = SubResource("LabelSettings_pgct0")

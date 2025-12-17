@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://bapqxop4fqy28"]
+
+[ext_resource type="Material" uid="uid://bon0m0w2ti376" path="res://Materials/key.tres" id="1_4ux5h"]
+[ext_resource type="Script" path="res://Scripts/pickup_key.gd" id="1_vu130"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_4hf1l"]
+height = 0.1
+radial_segments = 14
+
+[sub_resource type="BoxMesh" id="BoxMesh_bkici"]
+size = Vector3(0.2, 0.05, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2bvlp"]
+
+[node name="key" type="StaticBody3D"]
+script = ExtResource("1_vu130")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_4ux5h")
+mesh = SubResource("CylinderMesh_4hf1l")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.952587)
+material_override = ExtResource("1_4ux5h")
+mesh = SubResource("BoxMesh_bkici")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.41551, 0, 0, 0, 0.719599, 0, 0, 0, 0.152336, 0.219511, 0, 1.33061)
+material_override = ExtResource("1_4ux5h")
+mesh = SubResource("BoxMesh_bkici")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.39801, 0, 0, 0, 0.719599, 0, 0, 0, 0.0991667, 0.191909, 0, 1.08789)
+material_override = ExtResource("1_4ux5h")
+mesh = SubResource("BoxMesh_bkici")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.325206, 0, 0, 0, 2.06804, 0, 0, 0.497722)
+shape = SubResource("BoxShape3D_2bvlp")

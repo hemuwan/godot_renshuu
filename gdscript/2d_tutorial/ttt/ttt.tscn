@@ -1,0 +1,53 @@
+[gd_scene load_steps=11 format=3 uid="uid://e22g7o41fwqi"]
+
+[ext_resource type="Texture2D" uid="uid://bxhvq7aond01g" path="res://ttt/Wood_Floor_012_basecolor.jpg" id="1_un7uj"]
+[ext_resource type="Texture2D" uid="uid://kjkhf5caubmt" path="res://ttt/Wood_Floor_012_normal.jpg" id="2_khnn8"]
+[ext_resource type="Texture2D" uid="uid://cbc3kw3eqf62v" path="res://ttt/Wood_Floor_012_roughness.jpg" id="3_ufp8n"]
+[ext_resource type="Texture2D" uid="uid://dasls1ksuuxle" path="res://ttt/wall_mosaic.jpg" id="4_pqcte"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nfhmi"]
+albedo_texture = ExtResource("1_un7uj")
+roughness_texture = ExtResource("3_ufp8n")
+normal_enabled = true
+normal_scale = 3.11
+normal_texture = ExtResource("2_khnn8")
+
+[sub_resource type="BoxMesh" id="BoxMesh_6t5g3"]
+material = SubResource("StandardMaterial3D_nfhmi")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nux4w"]
+albedo_color = Color(0.454524, 0.454524, 0.454524, 1)
+albedo_texture = ExtResource("4_pqcte")
+albedo_texture_msdf = true
+roughness = 0.0
+roughness_texture = ExtResource("3_ufp8n")
+emission_enabled = true
+normal_enabled = true
+normal_scale = 3.94
+normal_texture = ExtResource("2_khnn8")
+uv1_scale = Vector3(10.205, 10.205, 10.205)
+
+[sub_resource type="QuadMesh" id="QuadMesh_nwrmi"]
+material = SubResource("StandardMaterial3D_nux4w")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qvmf1"]
+metallic = 0.39
+roughness_texture = ExtResource("4_pqcte")
+normal_scale = -6.63
+uv2_scale = Vector3(8.64, 8.64, 8.64)
+
+[sub_resource type="QuadMesh" id="QuadMesh_ja0s0"]
+material = SubResource("StandardMaterial3D_qvmf1")
+
+[node name="ttt" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_6t5g3")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(6.65615, 0, 0, 0, 1.80701, 0.0119857, 0, -2.06595, 0.0104834, 0.00268197, 0, -2.41934)
+mesh = SubResource("QuadMesh_nwrmi")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.77959, 0, 0, 0, 2.24777, 0.698113, 0, -0.982586, 1.59701, 0, 0.0745437, -1.40227)
+mesh = SubResource("QuadMesh_ja0s0")

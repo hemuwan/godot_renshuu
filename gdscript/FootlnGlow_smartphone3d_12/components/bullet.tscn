@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://vcdi43nf1kf4"]
+
+[ext_resource type="Script" path="res://components/bullet.gd" id="1_ilmct"]
+[ext_resource type="PackedScene" uid="uid://l1x5lpx3mskk" path="res://design/design_my_soldier.tscn" id="2_vwv55"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yy7tt"]
+radius = 0.1
+height = 0.5
+
+[node name="bullet" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+collision_layer = 8
+collision_mask = 13
+script = ExtResource("1_ilmct")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_yy7tt")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+
+[node name="designMySoldier" parent="." instance=ExtResource("2_vwv55")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+
+[node name="MultiplicationAreaDerecter" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MultiplicationAreaDerecter"]
+shape = SubResource("CapsuleShape3D_yy7tt")
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]
+[connection signal="area_entered" from="MultiplicationAreaDerecter" to="." method="_on_multiplication_area_derecter_area_entered"]

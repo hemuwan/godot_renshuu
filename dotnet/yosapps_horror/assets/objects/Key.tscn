@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cr5wr1urp0e61"]
+
+[ext_resource type="Script" path="res://scripts/Interactable.cs" id="1_6ci0s"]
+[ext_resource type="ArrayMesh" uid="uid://og6l6vuagqfs" path="res://assets/objects/key.res" id="1_7y7qa"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_udeth"]
+size = Vector3(0.575012, 0.970215, 3.29004)
+
+[node name="Key" type="StaticBody3D"]
+process_mode = 3
+script = ExtResource("1_6ci0s")
+ObjectName = "鍵"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0, 0, 0)
+mesh = ExtResource("1_7y7qa")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.00536194, -0.00148926, 0.0595215)
+shape = SubResource("BoxShape3D_udeth")

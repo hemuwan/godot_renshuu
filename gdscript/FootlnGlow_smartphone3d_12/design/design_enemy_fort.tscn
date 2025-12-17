@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7qed8yeovuy8"]
+
+[ext_resource type="Material" uid="uid://pb6680tefn8g" path="res://design/design_enemy_fort.tres" id="1_oiwt6"]
+[ext_resource type="Material" uid="uid://dn534kv2g8vum" path="res://design/design_enemy_soldier.tres" id="2_4t3wf"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_6grea"]
+top_radius = 0.02
+bottom_radius = 0.02
+height = 1.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_yvv6a"]
+material = ExtResource("2_4t3wf")
+size = Vector3(0.5, 0.5, 0.01)
+
+[node name="DesignEnemyFort" type="Node3D"]
+
+[node name="outerWall" type="CSGCylinder3D" parent="."]
+material = ExtResource("1_oiwt6")
+
+[node name="ceiling" type="CSGSphere3D" parent="outerWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.920441, 0)
+material = ExtResource("1_oiwt6")
+
+[node name="doorway" type="CSGBox3D" parent="outerWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0.5)
+operation = 2
+size = Vector3(0.4, 1, 0.4)
+
+[node name="room" type="CSGCylinder3D" parent="outerWall"]
+operation = 2
+radius = 0.4
+height = 1.5
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.923224, 0, 0.384263, 0, 1, 0, -0.384263, 0, 0.923224, 0.840656, 0.22403, 2.37101)
+visible = false
+
+[node name="flagPole" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+mesh = SubResource("CylinderMesh_6grea")
+
+[node name="flag" type="MeshInstance3D" parent="flagPole"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.25, 0)
+mesh = SubResource("BoxMesh_yvv6a")

@@ -1,0 +1,347 @@
+[gd_scene load_steps=37 format=3 uid="uid://bwlxbg36urk3x"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_m1pu0"]
+size = Vector3(2, 6, 7)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nrpyj"]
+size = Vector3(2, 6, 7)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_t84l1"]
+top_radius = 1.0
+bottom_radius = 1.0
+height = 4.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_dbqlv"]
+radius = 1.0
+height = 2.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_wu5s7"]
+top_radius = 1.0
+bottom_radius = 1.0
+height = 4.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_a5b1r"]
+radius = 1.0
+height = 2.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_cfjf2"]
+size = Vector3(2, 2, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_m2q55"]
+radius = 1.0
+height = 2.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_3nfnh"]
+size = Vector3(2, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_slnqo"]
+size = Vector3(2, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fgkk0"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_e0yq6"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_r4qog"]
+top_radius = 1.0
+bottom_radius = 1.0
+height = 4.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_wje83"]
+radius = 1.0
+height = 2.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_drwwb"]
+top_radius = 1.0
+bottom_radius = 1.0
+height = 4.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_f0xhn"]
+radius = 1.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_j2chj"]
+size = Vector3(2, 2, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ssutp"]
+radius = 1.0
+height = 2.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_r617q"]
+size = Vector3(2, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kq1s3"]
+size = Vector3(2, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qiupx"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7js1f"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_85umn"]
+top_radius = 1.0
+bottom_radius = 1.0
+height = 4.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_v27e0"]
+radius = 2.0
+height = 5.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_gxwrp"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_bq7xk"]
+top_radius = 1.5
+bottom_radius = 1.5
+height = 6.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_iu003"]
+radius = 1.5
+height = 3.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_k87sa"]
+top_radius = 1.5
+bottom_radius = 1.5
+height = 6.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_j8lo0"]
+size = Vector3(5, 1.5, 3)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_h8r0v"]
+top_radius = 1.5
+bottom_radius = 1.5
+height = 6.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_u2ykh"]
+radius = 1.5
+height = 3.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_swk7a"]
+top_radius = 1.5
+bottom_radius = 1.5
+height = 6.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_65glf"]
+size = Vector3(5, 1.5, 3)
+
+[sub_resource type="Animation" id="Animation_s76uv"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_xqnqo"]
+resource_name = "new_animation"
+length = 5.0
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4bo47"]
+_data = {
+"RESET": SubResource("Animation_s76uv"),
+"new_animation": SubResource("Animation_xqnqo")
+}
+
+[node name="Human" type="Node3D"]
+
+[node name="HipBall" type="Marker3D" parent="."]
+
+[node name="Hip" type="MeshInstance3D" parent="HipBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+mesh = SubResource("BoxMesh_m1pu0")
+
+[node name="ChestBall" type="Marker3D" parent="HipBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+
+[node name="Chest" type="MeshInstance3D" parent="HipBall/ChestBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+mesh = SubResource("BoxMesh_nrpyj")
+
+[node name="LeftShoulderBall" type="Marker3D" parent="HipBall/ChestBall"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5.5, 4.5)
+
+[node name="LeftShoulder" type="MeshInstance3D" parent="HipBall/ChestBall/LeftShoulderBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+mesh = SubResource("CylinderMesh_t84l1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="HipBall/ChestBall/LeftShoulderBall/LeftShoulder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = SubResource("SphereMesh_dbqlv")
+
+[node name="LeftArmBall" type="Marker3D" parent="HipBall/ChestBall/LeftShoulderBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
+
+[node name="LeftArm" type="MeshInstance3D" parent="HipBall/ChestBall/LeftShoulderBall/LeftArmBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+mesh = SubResource("CylinderMesh_wu5s7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="HipBall/ChestBall/LeftShoulderBall/LeftArmBall/LeftArm"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = SubResource("SphereMesh_a5b1r")
+
+[node name="LeftHnadBall" type="Marker3D" parent="HipBall/ChestBall/LeftShoulderBall/LeftArmBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
+
+[node name="LeftHand" type="MeshInstance3D" parent="HipBall/ChestBall/LeftShoulderBall/LeftArmBall/LeftHnadBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+mesh = SubResource("BoxMesh_cfjf2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="HipBall/ChestBall/LeftShoulderBall/LeftArmBall/LeftHnadBall/LeftHand"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("SphereMesh_m2q55")
+
+[node name="LeftFingerBall" type="Marker3D" parent="HipBall/ChestBall/LeftShoulderBall/LeftArmBall/LeftHnadBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+
+[node name="LeftFinger" type="MeshInstance3D" parent="HipBall/ChestBall/LeftShoulderBall/LeftArmBall/LeftHnadBall/LeftFingerBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("BoxMesh_3nfnh")
+
+[node name="LeftFingerPickball" type="Marker3D" parent="HipBall/ChestBall/LeftShoulderBall/LeftArmBall/LeftHnadBall/LeftFingerBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="LeftFingerPick" type="MeshInstance3D" parent="HipBall/ChestBall/LeftShoulderBall/LeftArmBall/LeftHnadBall/LeftFingerBall/LeftFingerPickball"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("BoxMesh_slnqo")
+
+[node name="LeftThumbBall" type="Marker3D" parent="HipBall/ChestBall/LeftShoulderBall/LeftArmBall/LeftHnadBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 0)
+
+[node name="LeftThumb" type="MeshInstance3D" parent="HipBall/ChestBall/LeftShoulderBall/LeftArmBall/LeftHnadBall/LeftThumbBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+mesh = SubResource("BoxMesh_fgkk0")
+
+[node name="LeftThumbPickBall" type="Marker3D" parent="HipBall/ChestBall/LeftShoulderBall/LeftArmBall/LeftHnadBall/LeftThumbBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+
+[node name="LeftThumbPick" type="MeshInstance3D" parent="HipBall/ChestBall/LeftShoulderBall/LeftArmBall/LeftHnadBall/LeftThumbBall/LeftThumbPickBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("BoxMesh_e0yq6")
+
+[node name="RightShoulderBall" type="Marker3D" parent="HipBall/ChestBall"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 5.5, -4.5)
+
+[node name="RightShoulder" type="MeshInstance3D" parent="HipBall/ChestBall/RightShoulderBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+mesh = SubResource("CylinderMesh_r4qog")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="HipBall/ChestBall/RightShoulderBall/RightShoulder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = SubResource("SphereMesh_wje83")
+
+[node name="RightArmBall" type="Marker3D" parent="HipBall/ChestBall/RightShoulderBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
+
+[node name="RightArm" type="MeshInstance3D" parent="HipBall/ChestBall/RightShoulderBall/RightArmBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+mesh = SubResource("CylinderMesh_drwwb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="HipBall/ChestBall/RightShoulderBall/RightArmBall/RightArm"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = SubResource("CapsuleMesh_f0xhn")
+
+[node name="RightHandBall" type="Marker3D" parent="HipBall/ChestBall/RightShoulderBall/RightArmBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
+
+[node name="RightHand" type="MeshInstance3D" parent="HipBall/ChestBall/RightShoulderBall/RightArmBall/RightHandBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+mesh = SubResource("BoxMesh_j2chj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="HipBall/ChestBall/RightShoulderBall/RightArmBall/RightHandBall/RightHand"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("SphereMesh_ssutp")
+
+[node name="RightFingerBall" type="Marker3D" parent="HipBall/ChestBall/RightShoulderBall/RightArmBall/RightHandBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+
+[node name="RightFinger" type="MeshInstance3D" parent="HipBall/ChestBall/RightShoulderBall/RightArmBall/RightHandBall/RightFingerBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("BoxMesh_r617q")
+
+[node name="RightFingerPickBall" type="Marker3D" parent="HipBall/ChestBall/RightShoulderBall/RightArmBall/RightHandBall/RightFingerBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
+
+[node name="RightFingerPick" type="MeshInstance3D" parent="HipBall/ChestBall/RightShoulderBall/RightArmBall/RightHandBall/RightFingerBall/RightFingerPickBall"]
+mesh = SubResource("BoxMesh_kq1s3")
+
+[node name="RightThumbBall" type="Marker3D" parent="HipBall/ChestBall/RightShoulderBall/RightArmBall/RightHandBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="HipBall/ChestBall/RightShoulderBall/RightArmBall/RightHandBall/RightThumbBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+mesh = SubResource("BoxMesh_qiupx")
+
+[node name="RightThumbPickball" type="Marker3D" parent="HipBall/ChestBall/RightShoulderBall/RightArmBall/RightHandBall/RightThumbBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+
+[node name="RightThumbPick" type="MeshInstance3D" parent="HipBall/ChestBall/RightShoulderBall/RightArmBall/RightHandBall/RightThumbBall/RightThumbPickball"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("BoxMesh_7js1f")
+
+[node name="NeckBall" type="Marker3D" parent="HipBall/ChestBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+
+[node name="Neck" type="MeshInstance3D" parent="HipBall/ChestBall/NeckBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CylinderMesh_85umn")
+
+[node name="HeadBall" type="Marker3D" parent="HipBall/ChestBall/NeckBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="Head" type="MeshInstance3D" parent="HipBall/ChestBall/NeckBall/HeadBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+mesh = SubResource("CapsuleMesh_v27e0")
+
+[node name="Nose" type="MeshInstance3D" parent="HipBall/ChestBall/NeckBall/HeadBall/Head"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -2.81159, -0.523722, 0)
+mesh = SubResource("CylinderMesh_gxwrp")
+skeleton = NodePath("../..")
+
+[node name="LefThighBall" type="Marker3D" parent="HipBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="LeftThigh" type="MeshInstance3D" parent="HipBall/LefThighBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+mesh = SubResource("CylinderMesh_bq7xk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="HipBall/LefThighBall/LeftThigh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+mesh = SubResource("SphereMesh_iu003")
+
+[node name="LeftLegBall" type="Marker3D" parent="HipBall/LefThighBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, 0)
+
+[node name="LeftLeg" type="MeshInstance3D" parent="HipBall/LefThighBall/LeftLegBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+mesh = SubResource("CylinderMesh_k87sa")
+
+[node name="LeftFootBall" type="Marker3D" parent="HipBall/LefThighBall/LeftLegBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, 0)
+
+[node name="LeftFoot" type="MeshInstance3D" parent="HipBall/LefThighBall/LeftLegBall/LeftFootBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -0.5, 0)
+mesh = SubResource("BoxMesh_j8lo0")
+
+[node name="RightThighBall" type="Marker3D" parent="HipBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="RightThigh" type="MeshInstance3D" parent="HipBall/RightThighBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+mesh = SubResource("CylinderMesh_h8r0v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="HipBall/RightThighBall/RightThigh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+mesh = SubResource("SphereMesh_u2ykh")
+skeleton = NodePath("../..")
+
+[node name="RightLegBall" type="Marker3D" parent="HipBall/RightThighBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, 0)
+
+[node name="RightLeg" type="MeshInstance3D" parent="HipBall/RightThighBall/RightLegBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+mesh = SubResource("CylinderMesh_swk7a")
+
+[node name="RightFootBall" type="Marker3D" parent="HipBall/RightThighBall/RightLegBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, 0)
+
+[node name="RightFoot" type="MeshInstance3D" parent="HipBall/RightThighBall/RightLegBall/RightFootBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -0.5, 0)
+mesh = SubResource("BoxMesh_65glf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4bo47")
+}

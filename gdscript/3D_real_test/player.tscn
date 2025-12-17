@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://clc18qgm08tha"]
+
+[ext_resource type="Script" path="res://example/rigid_player.gd" id="1_rrm5b"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_0lxpg"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5f3vg"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_0uten"]
+size = Vector3(0.3, 0.5, 0.3)
+
+[node name="Player" type="RigidBody3D"]
+script = ExtResource("1_rrm5b")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_0lxpg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_5f3vg")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.606095, -0.521966)
+mesh = SubResource("PrismMesh_0uten")

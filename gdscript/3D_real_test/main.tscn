@@ -1,0 +1,99 @@
+[gd_scene load_steps=12 format=3 uid="uid://rnn3el46otxm"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_tsolq"]
+[ext_resource type="PackedScene" uid="uid://y1kqueoex0rt" path="res://steve2_bone_on_hip.glb" id="2_miw2p"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bt8nb"]
+size = Vector3(10, 1, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_02hxq"]
+albedo_color = Color(0.32549, 0.584314, 0.368627, 1)
+metallic = 1.0
+metallic_specular = 0.32
+roughness = 0.6
+
+[sub_resource type="BoxMesh" id="BoxMesh_p81p1"]
+material = SubResource("StandardMaterial3D_02hxq")
+size = Vector3(10, 1, 10)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hl2hj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_krn2p"]
+metallic = 1.0
+metallic_specular = 0.65
+roughness = 0.62
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ty8jv"]
+material = SubResource("StandardMaterial3D_krn2p")
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ov6fy"]
+rough = true
+bounce = 0.46
+absorbent = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ydnge"]
+albedo_color = Color(0.694118, 0.709804, 0.423529, 1)
+roughness = 0.2
+
+[sub_resource type="BoxMesh" id="BoxMesh_k02f7"]
+material = SubResource("StandardMaterial3D_ydnge")
+size = Vector3(1, 2, 1)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="ground" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ground"]
+shape = SubResource("BoxShape3D_bt8nb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ground/CollisionShape3D"]
+mesh = SubResource("BoxMesh_p81p1")
+skeleton = NodePath("../..")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.85486, 0)
+script = ExtResource("1_tsolq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("CapsuleShape3D_hl2hj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/CollisionShape3D"]
+visible = false
+mesh = SubResource("CapsuleMesh_ty8jv")
+skeleton = NodePath("../..")
+
+[node name="steve2_bone_on_hip" parent="CharacterBody3D" instance=ExtResource("2_miw2p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.894779, 0.44651, 0, -0.44651, 0.894779, 0, 3.21918, 7.40515)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0273755, 2.03163, 2.75491)
+light_color = Color(0.882353, 0.0980392, 0.321569, 1)
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+transform = Transform3D(0.728909, 0, 0.684611, 0, 1, 0, -0.684611, 0, 0.728909, -1.26969, 2.68279, 2.37248)
+quality = 3
+bounces = 4
+bounce_indirect_energy = 2.0
+denoiser_strength = 0.106
+generate_probes_subdiv = 3
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="LightmapGI"]
+transform = Transform3D(0.42083, 0.151033, -0.894478, 8.88178e-16, 0.986043, 0.166493, 0.90714, -0.0700654, 0.414956, -2.88053, 0, -2.70547)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="LightmapGI"]
+transform = Transform3D(0.925437, -0.366325, -0.096811, 0.290652, 0.522416, 0.801625, -0.24308, -0.769992, 0.589936, -0.626784, -0.727748, 0.0903335)
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="LightmapGI"]
+transform = Transform3D(0.685292, 0.709749, -0.163189, 0.566692, -0.378947, 0.731615, 0.457423, -0.593848, -0.661898, -2.32733, -1.546, -4.13759)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.90499, 0.5, 1.11691)
+physics_material_override = SubResource("PhysicsMaterial_ov6fy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.221184, 0)
+mesh = SubResource("BoxMesh_k02f7")

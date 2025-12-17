@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://c1p6kel8ah34v"]
+
+[ext_resource type="Script" path="res://stages/stage_normal.gd" id="1_gvb38"]
+[ext_resource type="PackedScene" uid="uid://bmftdyd6w2rmc" path="res://components/player.tscn" id="2_4s7g3"]
+[ext_resource type="PackedScene" uid="uid://d2kvtcmwxyug5" path="res://stageItem/ground.tscn" id="3_ewgcw"]
+[ext_resource type="PackedScene" uid="uid://mrpei8af15s6" path="res://components/enemy.tscn" id="4_k13d2"]
+[ext_resource type="PackedScene" uid="uid://bypntudhdmv7o" path="res://stageItem/rocky_mountain.tscn" id="5_kkmdu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3ldka"]
+size = Vector3(5, 2, 1)
+
+[node name="stage" type="Node3D"]
+script = ExtResource("1_gvb38")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.573576, 0.819152, 0, -0.819152, 0.573576, 0.00922585, 7, -0.00190163)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.642788, -0.663414, 0.383022, 0, 0.5, 0.866025, -0.766044, -0.55667, 0.321394, -10, 0, 0)
+shadow_enabled = true
+
+[node name="player" parent="." instance=ExtResource("2_4s7g3")]
+
+[node name="ground" parent="." instance=ExtResource("3_ewgcw")]
+
+[node name="enemy" parent="." instance=ExtResource("4_k13d2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
+
+[node name="enemyBulletSensor" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="enemyBulletSensor"]
+shape = SubResource("BoxShape3D_3ldka")
+
+[node name="RockyMountain" parent="." instance=ExtResource("5_kkmdu")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0.5, 0, -4)
+
+[connection signal="body_entered" from="enemyBulletSensor" to="." method="_on_enemy_bullet_sensor_body_entered"]

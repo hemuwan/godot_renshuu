@@ -1,0 +1,86 @@
+[gd_scene load_steps=2 format=3 uid="uid://dj5ugixldkkks"]
+
+[ext_resource type="Script" path="res://Scripts/pause_menu.gd" id="1_ivrvn"]
+
+[node name="Pause_menu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ivrvn")
+
+[node name="background" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1155.0
+offset_bottom = 653.0
+color = Color(0, 0, 0, 0.431373)
+
+[node name="paused_text" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -194.5
+offset_right = 194.5
+offset_bottom = 139.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 100
+text = "PAUSED"
+
+[node name="resume_button" type="Button" parent="."]
+modulate = Color(0, 0.67451, 0.231373, 1)
+layout_mode = 0
+offset_left = 425.0
+offset_top = 148.0
+offset_right = 730.0
+offset_bottom = 214.0
+theme_override_font_sizes/font_size = 40
+text = "RESUME"
+
+[node name="setting_button" type="Button" parent="."]
+modulate = Color(0, 0.67451, 0.231373, 1)
+layout_mode = 0
+offset_left = 428.0
+offset_top = 225.0
+offset_right = 733.0
+offset_bottom = 291.0
+theme_override_font_sizes/font_size = 40
+text = "SETTING
+"
+
+[node name="contorls_button" type="Button" parent="."]
+modulate = Color(0, 0.67451, 0.231373, 1)
+layout_mode = 0
+offset_left = 431.0
+offset_top = 303.0
+offset_right = 736.0
+offset_bottom = 369.0
+theme_override_font_sizes/font_size = 40
+text = "CONTROLS"
+
+[node name="menu_button" type="Button" parent="."]
+modulate = Color(0, 0.67451, 0.231373, 1)
+layout_mode = 0
+offset_left = 430.0
+offset_top = 384.0
+offset_right = 735.0
+offset_bottom = 450.0
+theme_override_font_sizes/font_size = 40
+text = "QUIT TO MENU"
+
+[node name="menu_button2" type="Button" parent="."]
+modulate = Color(0, 0.67451, 0.231373, 1)
+layout_mode = 0
+offset_left = 433.0
+offset_top = 465.0
+offset_right = 738.0
+offset_bottom = 531.0
+theme_override_font_sizes/font_size = 40
+text = "QUIT GAME"
+
+[connection signal="pressed" from="resume_button" to="." method="resume"]
+[connection signal="pressed" from="menu_button" to="." method="back_to_menu"]
+[connection signal="pressed" from="menu_button2" to="." method="quit_game"]

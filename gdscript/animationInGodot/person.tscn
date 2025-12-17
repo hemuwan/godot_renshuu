@@ -1,0 +1,114 @@
+[gd_scene load_steps=8 format=3 uid="uid://ckfxucdlvkn6n"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_q4pw5"]
+radius = 0.3
+height = 1.0
+radial_segments = 4
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ls71s"]
+radius = 0.1
+height = 0.4
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_f6qud"]
+height = 1.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_xhesq"]
+radius = 0.1
+height = 0.5
+
+[sub_resource type="BoxMesh" id="BoxMesh_yhr2v"]
+size = Vector3(0.1, 0.2, 0.3)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_53rt1"]
+radius = 0.13
+height = 0.7
+
+[sub_resource type="SphereMesh" id="SphereMesh_2iro6"]
+radius = 0.12
+height = 0.5
+
+[node name="Person" type="Node3D"]
+
+[node name="Body" type="RigidBody3D" parent="."]
+
+[node name="Hip" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, -0.242294, 0)
+mesh = SubResource("CapsuleMesh_q4pw5")
+
+[node name="Chest" type="MeshInstance3D" parent="Body/Hip"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.962856, 0)
+mesh = SubResource("CapsuleMesh_q4pw5")
+skeleton = NodePath("../..")
+
+[node name="Neck" type="MeshInstance3D" parent="Body/Hip/Chest"]
+transform = Transform3D(-0.477389, 0, -0.878692, 0, 1, 0, 0.878692, 0, -0.477389, 0, 0.586274, 0)
+mesh = SubResource("CapsuleMesh_ls71s")
+skeleton = NodePath("../../..")
+
+[node name="Head" type="MeshInstance3D" parent="Body/Hip/Chest/Neck"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.058048, 0.559374, 0)
+mesh = SubResource("CapsuleMesh_f6qud")
+skeleton = NodePath("../../../..")
+
+[node name="LeftShoulder" type="MeshInstance3D" parent="Body/Hip/Chest"]
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, -2, 0, 1, -4.37114e-08, 0, 0.23658, -0.490742)
+mesh = SubResource("CapsuleMesh_xhesq")
+skeleton = NodePath("../../../..")
+
+[node name="LeftArm" type="MeshInstance3D" parent="Body/Hip/Chest/LeftShoulder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.443759, 0.00685635)
+mesh = SubResource("CapsuleMesh_xhesq")
+skeleton = NodePath("../../../../..")
+
+[node name="LeftHand" type="MeshInstance3D" parent="Body/Hip/Chest/LeftShoulder/LeftArm"]
+transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, 1, 1, 4.37114e-08, -4.37114e-08, 0, -0.344476, -0.0157253)
+mesh = SubResource("BoxMesh_yhr2v")
+skeleton = NodePath("../../../../..")
+
+[node name="LightShoulder" type="MeshInstance3D" parent="Body/Hip/Chest"]
+transform = Transform3D(1.99218, -0.0883554, 7.72427e-09, -0.0122467, -0.0690329, -1.99519, 0.176286, 0.993694, -0.138608, 0, 0.21663, 0.495065)
+mesh = SubResource("CapsuleMesh_xhesq")
+skeleton = NodePath("../../../..")
+
+[node name="LightArm" type="MeshInstance3D" parent="Body/Hip/Chest/LightShoulder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.443759, -0.00997502)
+mesh = SubResource("CapsuleMesh_xhesq")
+skeleton = NodePath("../../../../..")
+
+[node name="RgithHand" type="MeshInstance3D" parent="Body/Hip/Chest/LightShoulder/LightArm"]
+transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, 1, 1, 4.37114e-08, -4.37114e-08, 0, 0.331274, -0.0447148)
+mesh = SubResource("BoxMesh_yhr2v")
+skeleton = NodePath("../../../../..")
+
+[node name="RightThigh" type="MeshInstance3D" parent="Body/Hip"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 1, 0, -1.03866, 0.136254)
+mesh = SubResource("CapsuleMesh_53rt1")
+skeleton = NodePath("../..")
+
+[node name="RightLeg" type="MeshInstance3D" parent="Body/Hip/RightThigh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.636904, 0)
+mesh = SubResource("CapsuleMesh_53rt1")
+skeleton = NodePath("../../..")
+
+[node name="RightFoot" type="MeshInstance3D" parent="Body/Hip/RightThigh/RightLeg"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.105317, -0.297851, 0.0198666)
+mesh = SubResource("SphereMesh_2iro6")
+skeleton = NodePath("../../../..")
+
+[node name="LeftHipBall" type="Marker3D" parent="Body/Hip"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.237367, -0.335799)
+
+[node name="LeftThigh" type="MeshInstance3D" parent="Body/Hip/LeftHipBall"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 1, 0, -0.801291, 0.165071)
+mesh = SubResource("CapsuleMesh_53rt1")
+skeleton = NodePath("../../..")
+
+[node name="LeftLeg" type="MeshInstance3D" parent="Body/Hip/LeftHipBall/LeftThigh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.636904, 0)
+mesh = SubResource("CapsuleMesh_53rt1")
+skeleton = NodePath("../../../..")
+
+[node name="LeftFoot" type="MeshInstance3D" parent="Body/Hip/LeftHipBall/LeftThigh/LeftLeg"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.105317, -0.297851, -0.0113273)
+mesh = SubResource("SphereMesh_2iro6")
+skeleton = NodePath("../../../../..")

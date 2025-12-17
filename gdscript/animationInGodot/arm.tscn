@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=3 uid="uid://5arb2ctwn6is"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_n5an5"]
+radius = 0.3
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_pll54"]
+radius = 0.3
+
+[sub_resource type="BoxMesh" id="BoxMesh_0lnv7"]
+size = Vector3(0.3, 0.5, 0.8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xjots"]
+size = Vector3(0.3, 0.6, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_m8d2n"]
+size = Vector3(0.2, 0.5, 0.2)
+
+[sub_resource type="Animation" id="Animation_6mjgj"]
+resource_name = "new_animation"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ioslt"]
+_data = {
+"new_animation": SubResource("Animation_6mjgj")
+}
+
+[node name="Arm" type="Node3D"]
+
+[node name="ShoulderBall" type="Marker3D" parent="."]
+
+[node name="Shoulder" type="MeshInstance3D" parent="ShoulderBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, 0)
+mesh = SubResource("CapsuleMesh_n5an5")
+skeleton = NodePath("../..")
+
+[node name="ArmBall" type="Marker3D" parent="ShoulderBall/Shoulder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.822896, 0)
+
+[node name="Arm" type="MeshInstance3D" parent="ShoulderBall/Shoulder/ArmBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, 0)
+mesh = SubResource("CapsuleMesh_pll54")
+skeleton = NodePath("../../../..")
+
+[node name="HandBall" type="Marker3D" parent="ShoulderBall/Shoulder/ArmBall/Arm"]
+transform = Transform3D(0.999999, 0.00150099, 0, -0.00150099, 0.999999, 0, 0, 0, 1, 0, -0.81553, 0)
+
+[node name="Hand" type="MeshInstance3D" parent="ShoulderBall/Shoulder/ArmBall/Arm/HandBall"]
+transform = Transform3D(1, 1.86265e-09, 0, -1.86265e-09, 1, 0, 0, 0, 1, 0.234786, -0.279331, 0)
+mesh = SubResource("BoxMesh_0lnv7")
+
+[node name="FingerBall" type="Marker3D" parent="ShoulderBall/Shoulder/ArmBall/Arm/HandBall/Hand"]
+transform = Transform3D(0.943928, 0.330152, 0, -0.330152, 0.943928, 0, 0, 0, 1, 0.000130072, -0.0866542, 0)
+
+[node name="Finger" type="MeshInstance3D" parent="ShoulderBall/Shoulder/ArmBall/Arm/HandBall/Hand/FingerBall"]
+transform = Transform3D(1, -4.65661e-10, 0, 4.65661e-10, 1, 0, 0, 0, 1, 0.000649109, -0.432456, -0.142517)
+mesh = SubResource("BoxMesh_xjots")
+
+[node name="ThumbsBall" type="Marker3D" parent="ShoulderBall/Shoulder/ArmBall/Arm/HandBall/Hand"]
+transform = Transform3D(0.935259, 0.353964, 0, -0.353964, 0.935259, 0, 0, 0, 1, 0.00994471, -0.173802, 0.280168)
+
+[node name="Thumbs" type="MeshInstance3D" parent="ShoulderBall/Shoulder/ArmBall/Arm/HandBall/Hand/ThumbsBall"]
+transform = Transform3D(1, -2.32831e-10, 0, 2.32831e-10, 1, 0, 0, 0, 1, 0.000285432, -0.190162, 0.0513342)
+mesh = SubResource("BoxMesh_m8d2n")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ioslt")
+}

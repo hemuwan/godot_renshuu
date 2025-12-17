@@ -1,0 +1,93 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhg85nu3jvqp7"]
+
+[ext_resource type="Texture2D" uid="uid://s8ohad7y2d1b" path="res://Textures/logo.png" id="1_mdvvr"]
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_yofut"]
+[ext_resource type="Texture2D" uid="uid://bext382456iyk" path="res://icon.svg" id="3_o5egn"]
+
+[node name="Main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yofut")
+
+[node name="background" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1157.0
+offset_bottom = 654.0
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 318.0
+offset_top = 1.0
+offset_right = 895.0
+offset_bottom = 367.0
+texture = ExtResource("1_mdvvr")
+expand_mode = 3
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 501.0
+offset_top = 366.0
+offset_right = 694.0
+offset_bottom = 431.0
+theme_override_font_sizes/font_size = 40
+text = "PLAY"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 502.0
+offset_top = 428.0
+offset_right = 695.0
+offset_bottom = 493.0
+theme_override_font_sizes/font_size = 40
+text = "SETTINGS"
+
+[node name="Button3" type="Button" parent="."]
+layout_mode = 0
+offset_left = 498.0
+offset_top = 494.0
+offset_right = 691.0
+offset_bottom = 559.0
+theme_override_font_sizes/font_size = 40
+text = "CREDITS"
+
+[node name="Button4" type="Button" parent="."]
+layout_mode = 0
+offset_left = 501.0
+offset_top = 558.0
+offset_right = 694.0
+offset_bottom = 623.0
+theme_override_font_sizes/font_size = 40
+text = "QUIT"
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 535.0
+offset_right = 168.0
+offset_bottom = 663.0
+scale = Vector2(0.619588, 0.618823)
+texture = ExtResource("3_o5egn")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 997.0
+offset_top = 610.0
+offset_right = 1140.0
+offset_bottom = 642.0
+text = "made by masaki"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 1081.0
+offset_top = 16.0
+offset_right = 1138.0
+offset_bottom = 48.0
+text = "v1.0.0"
+
+[connection signal="pressed" from="Button" to="." method="play"]
+[connection signal="pressed" from="Button4" to="." method="quit"]

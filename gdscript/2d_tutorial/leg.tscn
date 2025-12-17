@@ -1,0 +1,248 @@
+[gd_scene load_steps=11 format=3 uid="uid://bd7ot3ylxf2m6"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_4q20a"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_te357"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_77a1r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_txa2a"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_sp6cj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vfdjl"]
+
+[sub_resource type="Animation" id="Animation_85jkx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Marker3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.602715, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Marker3D/Marker3D/Marker3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.2633, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Marker3D/Marker3D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.591963, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Marker3D2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.513127, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Marker3D2/Marker3D:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.15708, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Marker3D2/Marker3D/Marker3D:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8rjcn"]
+resource_name = "wall"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Marker3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.602715, 0, 0), Vector3(-0.0454833, 0, 0), Vector3(-0.512446, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Marker3D/Marker3D/Marker3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.2633, 0, 0), Vector3(-0.0265115, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Marker3D/Marker3D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.591963, 0, 0), Vector3(0.157499, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Marker3D2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.03333, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.513127, 0, 0), Vector3(0, 0, 0), Vector3(0.560251, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Marker3D2/Marker3D:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.03333, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.15708, 0, 0), Vector3(0, 0, 0), Vector3(0.315905, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Marker3D2/Marker3D/Marker3D:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.03333, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4crn1"]
+resource_name = "wall_2"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pcu1v"]
+_data = {
+"RESET": SubResource("Animation_85jkx"),
+"wall": SubResource("Animation_8rjcn"),
+"wall_2": SubResource("Animation_4crn1")
+}
+
+[node name="Leg" type="Node3D"]
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.8238, -0.566881, 0, 0.566881, 0.8238, -1, 0, 0)
+
+[node name="upLeg" type="MeshInstance3D" parent="Marker3D"]
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, 0, -1, 0)
+mesh = SubResource("BoxMesh_4q20a")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Marker3D/upLeg"]
+shape = SubResource("BoxShape3D_te357")
+
+[node name="Marker3D" type="Marker3D" parent="Marker3D"]
+transform = Transform3D(1, 0, 0, 0, 0.829847, -0.557991, 0, 0.557991, 0.829847, 0, -2, 0)
+
+[node name="downLeg" type="MeshInstance3D" parent="Marker3D/Marker3D"]
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, 0, -1, 0)
+mesh = SubResource("BoxMesh_77a1r")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Marker3D/Marker3D/downLeg"]
+shape = SubResource("BoxShape3D_txa2a")
+
+[node name="Marker3D" type="Marker3D" parent="Marker3D/Marker3D"]
+transform = Transform3D(1, 0, 0, 0, 0.965536, -0.260268, 0, 0.260268, 0.965536, 0, -2, 0)
+
+[node name="foot" type="MeshInstance3D" parent="Marker3D/Marker3D/Marker3D"]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 2, 0, 0, 0.5)
+mesh = SubResource("BoxMesh_sp6cj")
+skeleton = NodePath("../../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Marker3D/Marker3D/Marker3D/foot"]
+shape = SubResource("BoxShape3D_vfdjl")
+
+[node name="Marker3D2" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.871214, 0.490904, 0, -0.490904, 0.871214, 1, 0, 0)
+
+[node name="upLeg" type="MeshInstance3D" parent="Marker3D2"]
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, 0, -1, 0)
+mesh = SubResource("BoxMesh_4q20a")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Marker3D2/upLeg"]
+shape = SubResource("BoxShape3D_te357")
+
+[node name="Marker3D" type="Marker3D" parent="Marker3D2"]
+transform = Transform3D(1, 0, 0, 0, 0.987688, -0.156434, 0, 0.156434, 0.987688, 0, -2, 0)
+
+[node name="downLeg" type="MeshInstance3D" parent="Marker3D2/Marker3D"]
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, 0, -1, 0)
+mesh = SubResource("BoxMesh_77a1r")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Marker3D2/Marker3D/downLeg"]
+shape = SubResource("BoxShape3D_txa2a")
+
+[node name="Marker3D" type="Marker3D" parent="Marker3D2/Marker3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+
+[node name="foot" type="MeshInstance3D" parent="Marker3D2/Marker3D/Marker3D"]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 2, 0, 0, 0.5)
+mesh = SubResource("BoxMesh_sp6cj")
+skeleton = NodePath("../../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Marker3D2/Marker3D/Marker3D/foot"]
+shape = SubResource("BoxShape3D_vfdjl")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pcu1v")
+}

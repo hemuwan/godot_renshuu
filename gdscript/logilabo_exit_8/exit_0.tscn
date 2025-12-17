@@ -1,0 +1,72 @@
+[gd_scene load_steps=15 format=3 uid="uid://dsjg66i6uh4o4"]
+
+[ext_resource type="PackedScene" uid="uid://gt1vci8c3s4o" path="res://exit_8_level.tscn" id="1_4q3ve"]
+[ext_resource type="Script" path="res://exit_0.gd" id="1_prfv2"]
+[ext_resource type="PackedScene" uid="uid://betshsw11b2l4" path="res://addons/kaykit_restaurant_bits/Assets/gltf/bowl.gltf" id="2_2rduf"]
+[ext_resource type="PackedScene" uid="uid://r6413a8h2edv" path="res://addons/kaykit_restaurant_bits/Assets/gltf/chair_A.gltf" id="3_mypgv"]
+[ext_resource type="PackedScene" uid="uid://d0hii6qf10ykf" path="res://addons/kaykit_restaurant_bits/Assets/gltf/chair_stool.gltf" id="4_6qxgp"]
+[ext_resource type="PackedScene" uid="uid://dvicq0v4e1bxs" path="res://addons/kaykit_restaurant_bits/Assets/gltf/crate.gltf" id="5_ynvqx"]
+[ext_resource type="PackedScene" uid="uid://ddn1c1upcyo2n" path="res://addons/kaykit_restaurant_bits/Assets/gltf/dishrack.gltf" id="6_i4bdn"]
+[ext_resource type="PackedScene" uid="uid://bi014285j3kqa" path="res://addons/kaykit_restaurant_bits/Assets/gltf/door_B.gltf" id="7_5qk2c"]
+[ext_resource type="PackedScene" uid="uid://ck7bxrhuis3jq" path="res://addons/kaykit_restaurant_bits/Assets/gltf/floor_kitchen_small.gltf" id="8_y0iq6"]
+[ext_resource type="PackedScene" uid="uid://blthpyliynqfn" path="res://addons/kaykit_restaurant_bits/Assets/gltf/food_ingredient_burger_uncooked.gltf" id="9_kocgt"]
+[ext_resource type="PackedScene" uid="uid://c4v4wg58hcsde" path="res://addons/kaykit_restaurant_bits/Assets/gltf/food_ingredient_carrot.gltf" id="10_jiel7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_djcma"]
+shading_mode = 0
+albedo_color = Color(1, 1, 0.341176, 1)
+
+[sub_resource type="TextMesh" id="TextMesh_jv3kx"]
+material = SubResource("StandardMaterial3D_djcma")
+text = "0"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_avubr"]
+size = Vector3(1, 1.32239, 1)
+
+[node name="exit0" type="Node3D" groups=["maps"]]
+script = ExtResource("1_prfv2")
+
+[node name="exit8Level" parent="." instance=ExtResource("1_4q3ve")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="bowl2" parent="." instance=ExtResource("2_2rduf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -1)
+
+[node name="chair_A2" parent="." instance=ExtResource("3_mypgv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -1)
+
+[node name="chair_stool2" parent="." instance=ExtResource("4_6qxgp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
+
+[node name="crate2" parent="." instance=ExtResource("5_ynvqx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 1)
+
+[node name="dishrack2" parent="." instance=ExtResource("6_i4bdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -1)
+
+[node name="door_B2" parent="." instance=ExtResource("7_5qk2c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 2)
+
+[node name="floor_kitchen_small2" parent="." instance=ExtResource("8_y0iq6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.99218, 0, 5.06677)
+
+[node name="food_ingredient_burger_uncooked2" parent="." instance=ExtResource("9_kocgt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.03832, 0.152711, -1)
+
+[node name="food_ingredient_carrot2" parent="." instance=ExtResource("10_jiel7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.93968, 0.828589, 5.68396)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(3.35661, 0, 0, 0, 3.35661, 0, 0, 0, 1, -11.967, 0.723539, 2.02934)
+mesh = SubResource("TextMesh_jv3kx")
+
+[node name="check_point" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.05422, 0, 0)
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="check_point"]
+transform = Transform3D(1, 0, 0, 0, 1.30638, 0, 0, 0, 4.03594, -15, 0, 0)
+shape = SubResource("BoxShape3D_avubr")
+
+[connection signal="body_entered" from="check_point" to="." method="_on_check_point_body_entered"]
+[connection signal="body_exited" from="check_point" to="." method="_on_check_point_body_exited"]

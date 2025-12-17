@@ -1,0 +1,33 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+# インポート済みリソース
+# テクスチャや音声の変換結果
+# 元データがあれば Godot が自動生成する
+.import/
+*.import
+
+# Exported files
+export/
+exports/
+build/
+dist/
+
+# エディタ・OS依存ファイル
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# ログ、Godot の一時バックアップ
+*.log
+*~
+
+# Mono / .NET (Godot C#)
+.mono/
+*.csproj
+*.sln
+.nuget/
+bin/
+obj/

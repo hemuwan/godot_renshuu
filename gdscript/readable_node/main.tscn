@@ -1,0 +1,152 @@
+[gd_scene load_steps=18 format=3 uid="uid://byppy1ub8yfdb"]
+
+[ext_resource type="PackedScene" uid="uid://dw0bulm2lnfk2" path="res://player.tscn" id="1_vuxgc"]
+[ext_resource type="Script" path="res://decrementer.gd" id="2_iqlx4"]
+[ext_resource type="Script" path="res://increment_button.gd" id="2_kjqx1"]
+[ext_resource type="Script" path="res://incrementer.gd" id="2_ndjj7"]
+[ext_resource type="Script" path="res://counter_viewer.gd" id="3_7es21"]
+[ext_resource type="Script" path="res://decrement_button.gd" id="4_xrbu1"]
+[ext_resource type="Script" path="res://counter.gd" id="5_smc07"]
+[ext_resource type="Script" path="res://box_generator.gd" id="8_50opp"]
+[ext_resource type="Script" path="res://resume_button.gd" id="8_p7n8a"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_q0w2a"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_87350"]
+sky_material = SubResource("ProceduralSkyMaterial_q0w2a")
+
+[sub_resource type="Environment" id="Environment_6if3t"]
+background_mode = 2
+sky = SubResource("Sky_87350")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hr7q5"]
+points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rlm7s"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_27e5o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bkrkk"]
+albedo_color = Color(1, 0.333333, 0.415686, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wq6ia"]
+material = SubResource("StandardMaterial3D_bkrkk")
+
+[node name="main" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_6if3t")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="floor" type="StaticBody3D" parent="."]
+transform = Transform3D(200, 0, 0, 0, 1, 0, 0, 0, 300, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor"]
+shape = SubResource("ConvexPolygonShape3D_hr7q5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floor/CollisionShape3D"]
+mesh = SubResource("BoxMesh_rlm7s")
+skeleton = NodePath("../../..")
+
+[node name="player" parent="." instance=ExtResource("1_vuxgc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.73391, 69.4715)
+
+[node name="box" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.45742, 5.76441, 37.8117)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="box"]
+shape = SubResource("BoxShape3D_27e5o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="box"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.88567, 0)
+mesh = SubResource("BoxMesh_wq6ia")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="viewer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 1.0
+offset_right = 268.0
+offset_bottom = 303.0
+size_flags_horizontal = 0
+
+[node name="Counter" type="Node" parent="viewer"]
+script = ExtResource("5_smc07")
+
+[node name="counterViewer" type="Label" parent="viewer"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -92.0
+offset_top = 28.0
+offset_right = 93.0
+offset_bottom = 56.0
+grow_horizontal = 2
+text = "0"
+script = ExtResource("3_7es21")
+
+[node name="incrementer" type="Node" parent="viewer"]
+script = ExtResource("2_ndjj7")
+
+[node name="decrementer" type="Node" parent="viewer"]
+script = ExtResource("2_iqlx4")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -204.0
+offset_top = -95.0
+offset_bottom = 249.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 0
+
+[node name="incrementButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 53.0
+text = "増える"
+script = ExtResource("2_kjqx1")
+
+[node name="decrementButton" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = -70.0
+offset_right = 49.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "減る"
+script = ExtResource("4_xrbu1")
+
+[node name="resumeButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_top = -88.0
+offset_right = 172.0
+offset_bottom = -19.0
+text = "resume"
+script = ExtResource("8_p7n8a")
+
+[node name="box_generator" type="Node" parent="."]
+script = ExtResource("8_50opp")
+
+[connection signal="pressed" from="Control/incrementButton" to="Control/incrementButton" method="_on_pressed"]
+[connection signal="pressed" from="Control/decrementButton" to="Control/decrementButton" method="_on_pressed"]
+[connection signal="pressed" from="Control/resumeButton" to="Control/resumeButton" method="_on_pressed"]

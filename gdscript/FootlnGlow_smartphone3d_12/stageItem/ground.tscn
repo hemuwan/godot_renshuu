@@ -1,0 +1,80 @@
+[gd_scene load_steps=14 format=3 uid="uid://d2kvtcmwxyug5"]
+
+[ext_resource type="Texture2D" uid="uid://ql44og7av6mm" path="res://asset/texture/Stylized_Grass_003_basecolor.jpg" id="1_7a1vi"]
+[ext_resource type="Texture2D" uid="uid://bb027aihv0p1g" path="res://asset/texture/AllSkyFree1.0/Epic_BlueSunset_EquiRect_flat.png" id="2_54qem"]
+[ext_resource type="Script" path="res://stageItem/WorldEnvironment.gd" id="4_agsp6"]
+[ext_resource type="Material" uid="uid://c5b6qwsrgcpwl" path="res://design/Wall.tres" id="4_miv70"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lqdg6"]
+albedo_texture = ExtResource("1_7a1vi")
+uv1_scale = Vector3(10, 10, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_odptx"]
+material = SubResource("StandardMaterial3D_lqdg6")
+size = Vector3(5, 1, 15)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8f7yt"]
+size = Vector3(5, 1, 15)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qre5s"]
+material = ExtResource("4_miv70")
+size = Vector3(0.5, 1.5, 15)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w1qp5"]
+size = Vector3(0.5, 3, 15)
+
+[sub_resource type="PrismMesh" id="PrismMesh_otute"]
+material = ExtResource("4_miv70")
+size = Vector3(2, 1.5, 1.5)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_qxa64"]
+panorama = ExtResource("2_54qem")
+
+[sub_resource type="Sky" id="Sky_fwohw"]
+sky_material = SubResource("PanoramaSkyMaterial_qxa64")
+
+[sub_resource type="Environment" id="Environment_qw6ts"]
+background_mode = 2
+sky = SubResource("Sky_fwohw")
+sky_rotation = Vector3(3.14159, 0, 0)
+
+[node name="ground" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -7)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_odptx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_8f7yt")
+
+[node name="WallLeft" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75, 0.25, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WallLeft"]
+mesh = SubResource("BoxMesh_qre5s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallLeft"]
+shape = SubResource("BoxShape3D_w1qp5")
+
+[node name="WallRight" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.75, 0.25, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WallRight"]
+mesh = SubResource("BoxMesh_qre5s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallRight"]
+shape = SubResource("BoxShape3D_w1qp5")
+
+[node name="WallLeftMiddle" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, -2, 0.25, -5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WallLeftMiddle"]
+mesh = SubResource("PrismMesh_otute")
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="WallLeftMiddle"]
+depth = 1.5
+polygon = PackedVector2Array(-1, -0.75, 1, -0.75, 0, 0.75)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_qw6ts")
+script = ExtResource("4_agsp6")

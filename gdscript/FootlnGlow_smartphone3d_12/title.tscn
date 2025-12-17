@@ -1,0 +1,93 @@
+[gd_scene load_steps=8 format=3 uid="uid://df35wos8qid02"]
+
+[ext_resource type="Script" path="res://title.gd" id="1_g62qi"]
+[ext_resource type="PackedScene" uid="uid://cg7wsxijcy04x" path="res://design/design_cannon.tscn" id="1_ptkup"]
+[ext_resource type="PackedScene" uid="uid://c7qed8yeovuy8" path="res://design/design_enemy_fort.tscn" id="2_ouk1g"]
+[ext_resource type="PackedScene" uid="uid://uqclinob3y0i" path="res://design/design_enemy_soldier.tscn" id="3_hrujl"]
+[ext_resource type="PackedScene" uid="uid://l1x5lpx3mskk" path="res://design/design_my_soldier.tscn" id="4_63teg"]
+[ext_resource type="PackedScene" uid="uid://cb2wi1hjkb11q" path="res://settings_popup_panel.tscn" id="6_geysy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_frb7q"]
+font_size = 100
+
+[node name="Title" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g62qi")
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 340.5
+offset_right = 771.5
+offset_bottom = 137.0
+grow_horizontal = 2
+text = "MyGame"
+label_settings = SubResource("LabelSettings_frb7q")
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 416.0
+offset_top = 536.0
+offset_right = 516.0
+offset_bottom = 567.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Game Start!"
+
+[node name="settingsButton" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 596.0
+offset_top = 536.0
+offset_right = 636.0
+offset_bottom = 567.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "設定"
+
+[node name="background" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="background"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="background"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
+
+[node name="DesignCannon" parent="background" instance=ExtResource("1_ptkup")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -2, 1.5)
+
+[node name="DesignEnemyFort" parent="background" instance=ExtResource("2_ouk1g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="designMySoldier2" parent="background" instance=ExtResource("3_hrujl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -4)
+
+[node name="designMySoldier" parent="background" instance=ExtResource("4_63teg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+
+[node name="SettingsPopupPanel" parent="." instance=ExtResource("6_geysy")]
+visible = false
+
+[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Control/settingsButton" to="." method="_on_settings_button_pressed"]

@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://bn67e3wibdhhr"]
+
+[ext_resource type="Script" path="res://body.gd" id="1_xamdm"]
+[ext_resource type="PackedScene" uid="uid://bd7ot3ylxf2m6" path="res://leg.tscn" id="2_6jb00"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_60nk6"]
+
+[sub_resource type="Animation" id="Animation_67igh"]
+resource_name = "new_animation"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jje18"]
+_data = {
+"new_animation": SubResource("Animation_67igh")
+}
+
+[node name="body" type="Node3D"]
+script = ExtResource("1_xamdm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_60nk6")
+
+[node name="Leg" parent="MeshInstance3D" instance=ExtResource("2_6jb00")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jje18")
+}

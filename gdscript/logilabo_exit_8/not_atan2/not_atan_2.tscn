@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://18kiblengfdn"]
+
+[ext_resource type="Script" path="res://not_atan2/not_atan_2.gd" id="1_qg2o8"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_66ffs"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rdwwa"]
+radius = 0.7
+height = 3.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_fn3ri"]
+radial_segments = 4
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_816jl"]
+radius = 2.0
+
+[node name="not_atan2" type="RigidBody3D"]
+script = ExtResource("1_qg2o8")
+
+[node name="head" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.430885, -0.249543)
+mesh = SubResource("BoxMesh_66ffs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_rdwwa")
+
+[node name="MeshInstance" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_fn3ri")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.41277)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("CylinderShape3D_816jl")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

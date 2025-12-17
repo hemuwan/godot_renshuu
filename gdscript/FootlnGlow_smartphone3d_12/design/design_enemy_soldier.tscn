@@ -1,0 +1,116 @@
+[gd_scene load_steps=7 format=3 uid="uid://uqclinob3y0i"]
+
+[ext_resource type="Material" uid="uid://dn534kv2g8vum" path="res://design/design_enemy_soldier.tres" id="1_droqj"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_lkrfh"]
+material = ExtResource("1_droqj")
+height = 1.5
+
+[sub_resource type="SphereMesh" id="SphereMesh_6ts8h"]
+material = ExtResource("1_droqj")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_pt5df"]
+material = ExtResource("1_droqj")
+radius = 0.2
+height = 1.0
+
+[sub_resource type="Animation" id="Animation_7ks8b"]
+resource_name = "wal"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("body/shoulder_right:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.785398, 0, 0), Vector3(0.785398, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("body/shoulder_left:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.785398, 0, 0), Vector3(-0.785398, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("body/hip_right:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.785398, 0, 0), Vector3(-0.785398, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("body/hip_left:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.785398, 0, 0), Vector3(0.785398, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0xq0x"]
+_data = {
+"walk": SubResource("Animation_7ks8b")
+}
+
+[node name="designMySoldier" type="Node3D"]
+
+[node name="body" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_lkrfh")
+
+[node name="head" type="MeshInstance3D" parent="body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+mesh = SubResource("SphereMesh_6ts8h")
+
+[node name="shoulder_right" type="Marker3D" parent="body"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0.7, 0.7, 0)
+
+[node name="arm" type="MeshInstance3D" parent="body/shoulder_right"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("CapsuleMesh_pt5df")
+
+[node name="shoulder_left" type="Marker3D" parent="body"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, -0.7, 0.7, 0)
+
+[node name="arm" type="MeshInstance3D" parent="body/shoulder_left"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("CapsuleMesh_pt5df")
+
+[node name="hip_right" type="Marker3D" parent="body"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0.2, -0.7, 0)
+
+[node name="leg" type="MeshInstance3D" parent="body/hip_right"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("CapsuleMesh_pt5df")
+
+[node name="hip_left" type="Marker3D" parent="body"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -0.2, -0.7, 0)
+
+[node name="leg" type="MeshInstance3D" parent="body/hip_left"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("CapsuleMesh_pt5df")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0xq0x")
+}
+autoplay = "walk"

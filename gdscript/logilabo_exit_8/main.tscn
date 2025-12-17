@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3 uid="uid://dqhwmpdrxe3g1"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_ahycn"]
+[ext_resource type="PackedScene" uid="uid://dsjg66i6uh4o4" path="res://exit_0.tscn" id="1_cyml5"]
+[ext_resource type="PackedScene" uid="uid://c4255tu35hk1h" path="res://Player.tscn" id="2_q7bxw"]
+[ext_resource type="PackedScene" uid="uid://18kiblengfdn" path="res://not_atan2/not_atan_2.tscn" id="3_mhhux"]
+[ext_resource type="PackedScene" uid="uid://b6v3ghwnol1in" path="res://cube.tscn" id="5_k0g7h"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8kl8d"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_8pyol"]
+sky_material = SubResource("ProceduralSkyMaterial_8kl8d")
+
+[sub_resource type="Environment" id="Environment_q8ggn"]
+background_mode = 2
+sky = SubResource("Sky_8pyol")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Main" type="Node"]
+script = ExtResource("1_ahycn")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_q8ggn")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, -24.0757)
+shadow_enabled = true
+
+[node name="exit0" parent="." instance=ExtResource("1_cyml5")]
+
+[node name="pre_area" parent="." instance=ExtResource("1_cyml5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, -8)
+
+[node name="Player" parent="." instance=ExtResource("2_q7bxw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.87565, 0)
+
+[node name="not_atan2" parent="." instance=ExtResource("3_mhhux")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.10969, 1.70929, 0.647615)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "test"
+
+[node name="MeshInstance3D" parent="." instance=ExtResource("5_k0g7h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.41466, 0, -7.54151)

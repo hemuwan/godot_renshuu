@@ -1,0 +1,76 @@
+[gd_scene load_steps=8 format=3 uid="uid://0rxfnm2cjojm"]
+
+[ext_resource type="Material" uid="uid://cuao8mx6wm83v" path="res://Materials/light.tres" id="1_vlr5s"]
+[ext_resource type="Script" path="res://Scripts/light.gd" id="1_yhjpj"]
+[ext_resource type="AudioStream" uid="uid://bnkxho6kmx2i7" path="res://Sounds/light_noise.mp3" id="3_jjv1q"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_00vq4"]
+
+[sub_resource type="Animation" id="Animation_5x2uk"]
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OmniLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.233333, 0.333333, 0.4, 0.533333, 0.633333, 0.8, 1, 1.13333, 1.23333, 1.33333, 1.4, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.0, 1.138, 0.062, 1.605, 0.447, 0.814, 0.26, 0.781, 0.129, 0.417, 0.171, 0.578, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:material_override:albedo_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.233333, 0.333333, 0.4, 0.533333, 0.633333, 0.8, 1, 1.13333, 1.23333, 1.33333, 1.4, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.20871, 0.20871, 0.20871, 1), Color(1, 1, 1, 1), Color(0.252028, 0.252028, 0.252028, 1), Color(1, 1, 1, 1), Color(0.374139, 0.374139, 0.374139, 1), Color(0.691357, 0.691357, 0.691357, 1), Color(0.41598, 0.41598, 0.41598, 1), Color(0.605274, 0.605274, 0.605274, 1), Color(0.295867, 0.295866, 0.295866, 1), Color(0.347817, 0.347817, 0.347817, 1), Color(0.29219, 0.29219, 0.29219, 1), Color(0.439049, 0.439049, 0.439049, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_au5g4"]
+resource_name = "flashing_light"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OmniLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v8y5s"]
+_data = {
+"RESET": SubResource("Animation_5x2uk"),
+"flashing_light": SubResource("Animation_au5g4")
+}
+
+[node name="light" type="Node3D"]
+script = ExtResource("1_yhjpj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_vlr5s")
+cast_shadow = 0
+mesh = SubResource("SphereMesh_00vq4")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.783991, 0)
+shadow_enabled = true
+omni_range = 8.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_v8y5s")
+}
+
+[node name="flicker_sound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_jjv1q")

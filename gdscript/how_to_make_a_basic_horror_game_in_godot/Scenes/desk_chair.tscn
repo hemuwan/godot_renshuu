@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dr8iheetcyckj"]
+
+[ext_resource type="PackedScene" uid="uid://cmtiavka5015b" path="res://desk_chair.glb" id="1_o08he"]
+
+[node name="desk_chair" instance=ExtResource("1_o08he")]
+
+[node name="平面" parent="." index="0"]
+visible = false
