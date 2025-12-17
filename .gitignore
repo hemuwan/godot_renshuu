@@ -1,6 +1,8 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+*.exe
+GodotSharp/
 
 # インポート済みリソース
 # テクスチャや音声の変換結果
