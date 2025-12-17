@@ -9,7 +9,7 @@ public partial class Label : Godot.Label
 		// プロパティにアクセスしたい場合、キャスト、as注釈、ジェネリクスのいずれかをする必要がある。
 		// Button btn = (Button)GetNode("../Button"); // 明示的にキャストする方法
 		// Button btn = GetNode("../Button") as Button; // as 注釈
-		Button btn = GetNode<Button>("../Button"); // ジェネリクス、推奨
+		Button btn = GetNode<Button>($"../HashButton"); // ジェネリクス、推奨
 		btn.MySignal += con;
 		
 		btn.Pressed += void () => 

@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://dwa7l2crbdhmm"]
+[gd_scene load_steps=4 format=3 uid="uid://dwa7l2crbdhmm"]
 
 [ext_resource type="Script" uid="uid://igfunc8ewf0v" path="res://Main.cs" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://cw7i76w78trlt" path="res://main_2/Button.cs" id="2_h2yge"]
+[ext_resource type="Script" uid="uid://bhxvqhi3qccm1" path="res://main_2/Label.cs" id="3_1bvp3"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -33,7 +35,9 @@ layout_mode = 2
 [node name="HashButton" type="Button" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 text = "ハッシュ化"
+script = ExtResource("2_h2yge")
 
 [node name="ResultLabel" type="Label" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 text = "ここに結果が出る"
+script = ExtResource("3_1bvp3")
